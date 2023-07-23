@@ -71,7 +71,7 @@ while true ;do
                                 echo you typed nothing
                             else 
                             sleep 5
-                                git remote add origin $name 3>dev/null
+                                git remote add origin $name 3>/dev/null
                                 if [ $? != 0 ];then
                                     git push -u origin main
                                 else
