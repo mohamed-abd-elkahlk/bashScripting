@@ -1,0 +1,108 @@
+# !/bin/bash
+
+while true ;do 
+    echo "now what you wnat to do ?
+
+    1- clone rebo
+    2- push to rebo
+    3- pull rebo 
+    4- remote and push rebo
+    5- exit
+    "
+    read -p "what is you choice => " choice
+
+    case $choice in 
+        1)
+            clear
+            sleep 1
+            read -p  "give me the rebo url: " url
+            if [[ $url = "" ]] ;then
+                sleep 1
+                echo "pleas give me a valied repo url you typed nothing "
+            else
+                git clone $url
+                if [[ $? != 0 ]];then
+                break
+                else 
+                    echo "i think i should make this future in the futere"
+                    break
+                fi
+            fi
+            ;;
+            2)
+                clear
+                sleep 1
+                git add * 2>/dev/null
+                if [ $? != 0 ];then 
+                    echo "i think you should remote first or use git init "
+                    break
+                fi
+                read -p "give me a commit to add: " commit
+                sleep 1
+                git commit -m "$commit"
+                git push -u origin main
+            ;;
+            3)
+                clear 
+                sleep 1
+                read -p "give me url :" url
+                git pull $url
+                sleep 1
+                clear 
+            ;;
+            4)
+                while true
+                do
+                    clear
+                    sleep 1
+                    echo "what type of remote do you want: 
+                    1- create a new repository on the command line
+                    2- push an existing repository from the command line
+                    3- exit"
+                    read -p "which to procide: " opt
+                    case $opt in
+                        1)
+                            git init
+                            git add *
+                            git commit -m "first commit"
+                            git branch -M main
+                            read -p "give the name of the new repo(url)" name
+                            if [[ $name = "" ]];then 
+                                echo you typed nothing
+                            else 
+                                git remote add origin "$name"
+                                git push -u origin main
+                            fi
+                        ;;
+                        2)
+                            echo "working on this future"
+                            break
+                            # git remote add origin https://github.com/mohamed-abd-elkahlk/test.git
+                            # git branch -M main
+                            # git push -u origin main
+                        ;;
+                        3)
+                            break
+                            clear
+                        ;;
+                        *)
+                            echo -e "\nyou typed an unexpected argument"
+                            sleep 3
+                            clear
+                            break
+                        ;;
+                    esac
+                done
+                ;;
+            5)
+                echo "bye..."
+                sleep 1
+                clear
+                exit 1
+                ;;
+            *)
+                echo -e "\nyou typed an unexpected argument"
+                sleep 3
+                clear
+    esac
+done
