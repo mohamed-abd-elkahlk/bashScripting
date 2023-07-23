@@ -70,6 +70,7 @@ while true ;do
                             if [[ $name = "" ]];then 
                                 echo you typed nothing
                             else 
+                            sleep 5
                                 git remote add origin "$name"
                                 git push -u origin main
                             fi
