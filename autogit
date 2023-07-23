@@ -65,19 +65,19 @@ while true ;do
                             git init
                             git add *
                             git commit -m "first commit"
-                            sleep 5
                             git branch -M main
-                            sleep 5
                             read -p "give the name of the new repo(url)" name
                             if [[ $name = "" ]];then 
                                 echo you typed nothing
                             else 
                             sleep 5
-                                git remote add origin "$name"
+                                git remote add origin $name 3>dev/null
                                 if [ $? != 0 ];then
-
+                                    git push -u origin main
+                                else
+                                    git remote add origin $name
+                                    git push -u origin main
                                 fi
-                                git push -u origin main
                             fi
                         ;;
                         2)
