@@ -6,7 +6,7 @@ while true ;do
     1- clone rebo
     2- push to rebo
     3- pull rebo 
-    4- remote and push rebo
+    4- remote and push rebo first time
     5- exit
     "
     read -p "what is you choice => " choice
@@ -56,8 +56,8 @@ while true ;do
                     clear
                     sleep 1
                     echo "what type of remote do you want: 
-                    1- create a new repository on the command line
-                    2- push an existing repository from the command line
+                    1- init repo from command line and push it
+                    2- push an existing repository(init) from the command line
                     3- exit"
                     read -p "which to procide: " opt
                     case $opt in
